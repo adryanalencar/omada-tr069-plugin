@@ -1,0 +1,619 @@
+/* ==========================================================================
+   TP-LINK OMADA 6.3+ DESIGN SYSTEM & VISUAL IDENTITY (100% FAITHFUL)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Omada Brand Colors */
+  --omada-primary: var(--s-color-theme-main-deep, #00A870);
+  --omada-primary-hover: var(--s-color-theme-main-deep-hover, #05C178);
+  --omada-primary-active: #008b5c;
+  --omada-primary-light: rgba(0, 168, 112, 0.08);
+  --omada-primary-border: rgba(0, 168, 112, 0.25);
+
+  /* Status Colors */
+  --omada-success: #05C178;
+  --omada-success-bg: rgba(0, 168, 112, 0.1);
+  --omada-warning: #ff8c27;
+  --omada-warning-bg: rgba(255, 140, 39, 0.1);
+  --omada-error: #ee385c;
+  --omada-error-bg: rgba(238, 56, 92, 0.1);
+  --omada-info: #0069CB;
+  --omada-info-bg: rgba(0, 105, 203, 0.1);
+
+  /* Neutrals & Typography */
+  --omada-font-family: var(--s-font-family, Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+  --omada-text-primary: var(--s-color-theme-neutral-90, #2B2B2B);
+  --omada-text-secondary: var(--s-color-theme-neutral-70, #636363);
+  --omada-text-tertiary: var(--s-color-theme-neutral-60, #999999);
+  --omada-text-disabled: var(--s-color-theme-neutral-40, #CCCCCC);
+  --omada-border: var(--s-color-theme-neutral-30, #ECECEC);
+  --omada-border-input: var(--s-color-theme-neutral-40, #CCCCCC);
+  --omada-split: var(--s-color-split, #ECECEC);
+
+  /* Backgrounds */
+  --omada-bg-main: var(--s-color-background-main, #F7F7F7);
+  --omada-bg-card: var(--s-color-background-card, #FFFFFF);
+  --omada-bg-hover: var(--s-color-theme-neutral-10, #F7F7F7);
+  --omada-bg-table-head: #FAFAFA;
+}
+
+/* Ocultação limpa dos elementos irmãos nativos durante a visualização do React */
+.omada-react-hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   VIEWPORT PRINCIPAL (CONTENT AREA DO OMADA)
+   ========================================================================== */
+#omada-react-viewport,
+.omada-react-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  overflow-y: auto;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  background-color: var(--omada-bg-main);
+  color: var(--omada-text-primary);
+  font-family: var(--omada-font-family);
+  display: none !important;
+}
+
+#omada-react-viewport.active,
+.omada-react-viewport.active {
+  display: block !important;
+  animation: omadaFadeIn 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes omadaFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   BARRA LATERAL / SIDEBAR MENU ITEMS
+   ========================================================================== */
+.omada-react-nav-item .s-menu-item {
+  color: var(--omada-text-secondary);
+  user-select: none;
+  font-family: var(--omada-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  margin: 2px 8px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.omada-react-nav-item .s-menu-item:hover {
+  background-color: var(--omada-bg-hover) !important;
+  color: var(--omada-primary) !important;
+}
+
+.omada-react-nav-item.active > .s-menu-item,
+.omada-react-nav-item .s-menu-item.active {
+  color: var(--omada-primary) !important;
+  background-color: var(--omada-primary-light) !important;
+  font-weight: 600;
+}
+
+.omada-react-nav-item .s-menu-item .s-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.omada-react-nav-item .s-menu-item .expand-icon {
+  color: var(--omada-text-tertiary);
+  transition: transform 0.15s ease;
+  margin-left: auto;
+}
+
+/* ==========================================================================
+   POPOVER FLUTUANTE NATIVO DO OMADA (FLYOUT À DIREITA)
+   ========================================================================== */
+.omada-react-popover {
+  position: fixed;
+  z-index: 1060;
+  pointer-events: auto;
+  font-family: var(--omada-font-family);
+}
+
+.omada-react-popover-card {
+  background-color: var(--omada-bg-card);
+  border: 1px solid var(--omada-border);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  padding: 16px 8px;
+  box-sizing: border-box;
+}
+
+.omada-react-popover .s-menu-popover-outer {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.omada-react-popover .s-menu-popover-outer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.omada-react-popover .s-menu-popover-outer::-webkit-scrollbar-thumb {
+  background: var(--omada-border);
+  border-radius: 4px;
+}
+
+.omada-react-popover .s-menu-popover-wrapper {
+  display: flex;
+  column-gap: 12px;
+  padding: 0 8px;
+}
+
+.omada-react-popover .s-menu-popover-item-wrapper {
+  width: 200px;
+}
+
+.omada-react-popover .s-menu-popover-title {
+  font-weight: 600;
+  font-size: 13px;
+  padding: 4px 8px 8px 8px;
+  color: var(--omada-text-secondary);
+  letter-spacing: 0.3px;
+}
+
+.omada-react-popover .split {
+  height: 1px;
+  margin: 2px 8px 8px 8px;
+  background-color: var(--omada-split);
+}
+
+.omada-react-popover .s-menu-popover-item,
+.s-menu-popover-wrapper .s-menu-popover-item {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--omada-text-primary);
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 0;
+  transition: all 0.15s ease;
+  user-select: none;
+  font-family: var(--omada-font-family);
+}
+
+.omada-react-popover .s-menu-popover-item:hover,
+.s-menu-popover-wrapper .s-menu-popover-item:hover {
+  background-color: var(--omada-bg-hover) !important;
+  color: var(--omada-primary) !important;
+}
+
+.omada-react-popover .s-menu-popover-item.active,
+.s-menu-popover-wrapper .s-menu-popover-item.active {
+  color: var(--omada-primary) !important;
+  background-color: var(--omada-primary-light) !important;
+  font-weight: 600;
+}
+
+/* Badge nativo de menu */
+.sub-navigator-badge {
+  position: absolute;
+  right: 28px;
+  top: 10px;
+  background-color: var(--omada-primary);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 10px;
+  line-height: 14px;
+}
+
+/* ==========================================================================
+   CARDS & CONTAINERS NATIVOS DO OMADA
+   ========================================================================== */
+.omada-card {
+  background-color: var(--omada-bg-card);
+  border: 1px solid var(--omada-border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.omada-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 14px;
+  color: var(--omada-text-primary);
+  letter-spacing: -0.2px;
+}
+
+/* ==========================================================================
+   BOTÕES NATIVOS (OMADA / ANT DESIGN 5)
+   ========================================================================== */
+.omada-button,
+.omada-btn-primary {
+  background-color: var(--omada-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 0 18px;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  user-select: none;
+  font-family: var(--omada-font-family);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+.omada-button:hover,
+.omada-btn-primary:hover {
+  background-color: var(--omada-primary-hover);
+  filter: none;
+}
+
+.omada-button:active,
+.omada-btn-primary:active {
+  background-color: var(--omada-primary-active);
+}
+
+.omada-button:disabled,
+.omada-btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Botão Secundário / Outline */
+.omada-btn-default {
+  background-color: #ffffff;
+  color: var(--omada-text-primary);
+  border: 1px solid var(--omada-border-input);
+  border-radius: 6px;
+  padding: 0 16px;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--omada-font-family);
+}
+
+.omada-btn-default:hover {
+  border-color: var(--omada-primary);
+  color: var(--omada-primary);
+}
+
+/* ==========================================================================
+   INPUTS & CAMPOS DE BUSCA
+   ========================================================================== */
+.omada-input {
+  height: 32px;
+  padding: 4px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid var(--omada-border-input);
+  background-color: #ffffff;
+  color: var(--omada-text-primary);
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: var(--omada-font-family);
+  box-sizing: border-box;
+}
+
+.omada-input:focus {
+  border-color: var(--omada-primary);
+  box-shadow: 0 0 0 2px rgba(0, 168, 112, 0.15);
+}
+
+.omada-input::placeholder {
+  color: var(--omada-text-tertiary);
+}
+
+/* ==========================================================================
+   TABELAS NATIVAS (OMADA GRID)
+   ========================================================================== */
+.omada-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  font-size: 13px;
+  border: 1px solid var(--omada-border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: var(--omada-font-family);
+}
+
+.omada-table thead tr th {
+  background-color: var(--omada-bg-table-head);
+  color: var(--omada-text-secondary);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: none;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--omada-border);
+  line-height: 1.4;
+  letter-spacing: 0.1px;
+}
+
+.omada-table tbody tr td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--omada-border);
+  color: var(--omada-text-primary);
+  vertical-align: middle;
+  transition: background-color 0.15s ease;
+}
+
+.omada-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.omada-table tbody tr:hover td {
+  background-color: var(--omada-bg-hover);
+}
+
+/* ==========================================================================
+   BADGES & STATUS PILLS NATIVOS
+   ========================================================================== */
+.omada-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  font-family: var(--omada-font-family);
+}
+
+.omada-badge-success {
+  background-color: var(--omada-success-bg);
+  color: var(--omada-success);
+  border: 1px solid rgba(5, 193, 120, 0.25);
+}
+
+.omada-badge-warning {
+  background-color: var(--omada-warning-bg);
+  color: var(--omada-warning);
+  border: 1px solid rgba(255, 140, 39, 0.25);
+}
+
+.omada-badge-error {
+  background-color: var(--omada-error-bg);
+  color: var(--omada-error);
+  border: 1px solid rgba(238, 56, 92, 0.25);
+}
+
+.omada-badge-info {
+  background-color: var(--omada-primary-light);
+  color: var(--omada-primary);
+  border: 1px solid var(--omada-primary-border);
+}
+
+/* ==========================================================================
+   TABS / BOTÕES DE FILTRO PILL
+   ========================================================================== */
+.omada-filter-group {
+  display: inline-flex;
+  gap: 4px;
+  background-color: #EFEFEF;
+  padding: 3px;
+  border-radius: 6px;
+  border: 1px solid var(--omada-border);
+}
+
+.omada-filter-btn {
+  padding: 5px 14px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  color: var(--omada-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--omada-font-family);
+  user-select: none;
+}
+
+.omada-filter-btn:hover {
+  color: var(--omada-text-primary);
+}
+
+.omada-filter-btn.active {
+  background-color: #ffffff;
+  color: var(--omada-primary);
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   MODAL NATIVO (ESTILO OMADA / ANT DESIGN)
+   ========================================================================== */
+.omada-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+  backdrop-filter: blur(2px);
+  animation: omadaFadeIn 0.15s ease;
+}
+
+.omada-modal {
+  background-color: var(--omada-bg-card);
+  border-radius: 8px;
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  overflow: hidden;
+  font-family: var(--omada-font-family);
+  animation: omadaModalZoom 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes omadaModalZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.omada-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--omada-border);
+}
+
+.omada-modal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--omada-text-primary);
+}
+
+.omada-modal-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--omada-text-tertiary);
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.omada-modal-close:hover {
+  color: var(--omada-text-primary);
+  background-color: var(--omada-bg-hover);
+}
+
+.omada-modal-tabs {
+  display: flex;
+  gap: 20px;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--omada-border);
+  background-color: var(--omada-bg-card);
+}
+
+.omada-modal-tab {
+  padding: 12px 4px;
+  border: none;
+  background: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--omada-text-secondary);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+  font-family: var(--omada-font-family);
+}
+
+.omada-modal-tab:hover {
+  color: var(--omada-primary);
+}
+
+.omada-modal-tab.active {
+  color: var(--omada-primary);
+  font-weight: 600;
+}
+
+.omada-modal-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--omada-primary);
+  border-radius: 2px 2px 0 0;
+}
+
+.omada-modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.omada-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--omada-border);
+  background-color: var(--omada-bg-card);
+}
+
+/* ==========================================================================
+   SEARCH BAR WRAPPER
+   ========================================================================== */
+.omada-search-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.omada-search-wrapper input {
+  padding-left: 32px;
+}
+
+.omada-search-wrapper .search-icon {
+  position: absolute;
+  left: 10px;
+  color: var(--omada-text-tertiary);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+}
+

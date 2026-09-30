@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# tr069-ui (subproject node modules and local dist)
+tr069-ui/node_modules/
+tr069-ui/dist/
+tr069-ui/dist-ssr/
+*.tsbuildinfo
+
+# IDE & Editors
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs & dumps
+*.log
+*.hprof

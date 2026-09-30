@@ -1,0 +1,149 @@
+@import './styles/omada-theme.css';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --omada-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--omada-font-family);
+  background-color: var(--omada-bg-main, #F7F7F7);
+  color: var(--omada-text-primary, #2B2B2B);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Standalone Omada Header Bar */
+.omada-header-bar {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--omada-border, #ECECEC);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.omada-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.omada-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a1a1a;
+  letter-spacing: -0.2px;
+}
+
+.omada-brand-badge {
+  background: rgba(0, 168, 112, 0.12);
+  color: #00A870;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.omada-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--omada-text-secondary, #636363);
+}
+
+.omada-breadcrumb-sep {
+  color: var(--omada-text-disabled, #CCCCCC);
+}
+
+.omada-breadcrumb-current {
+  color: var(--omada-text-primary, #2B2B2B);
+  font-weight: 600;
+}
+
+/* App Main Content Area */
+.omada-content-area {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 24px 60px 24px;
+}
+
+/* KPI Cards Grid */
+.omada-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.omada-kpi-card {
+  background: #FFFFFF;
+  border: 1px solid var(--omada-border, #ECECEC);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.omada-kpi-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.omada-kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.omada-kpi-title {
+  font-size: 12px;
+  color: var(--omada-text-secondary, #636363);
+  font-weight: 500;
+}
+
+.omada-kpi-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--omada-text-primary, #2B2B2B);
+  letter-spacing: -0.5px;
+}
+
+.omada-kpi-sub {
+  font-size: 11px;
+  color: var(--omada-text-tertiary, #999999);
+  margin-top: 4px;
+}
+
+/* Spin animation for refresh buttons */
+.spin-anim {
+  animation: omadaSpin 0.9s linear infinite;
+}
+
+@keyframes omadaSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Monospace Helpers */
+.font-mono {
+  font-family: var(--font-mono);
+}
